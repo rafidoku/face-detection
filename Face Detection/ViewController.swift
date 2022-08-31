@@ -30,8 +30,8 @@ class ViewController: UIViewController {
         captureSession.startRunning()
         
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        captureView.layer.addSublayer(previewLayer)
-        previewLayer.frame = captureView.frame
+        view.layer.addSublayer(previewLayer)
+        previewLayer.frame = view.frame
         
         let dataOutput = AVCaptureVideoDataOutput()
         dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
@@ -42,27 +42,44 @@ class ViewController: UIViewController {
 
 extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+        guard let pixelBuffer: CVImageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
         }
-        guard let model = try? VNCoreMLModel(for: Resnet50().model) else {
-            return
-        }
-        var identifier = VNClassificationObservation()
-        let request = VNCoreMLRequest(model: model) { (finishedReq, err) in
-            
-            guard let results = finishedReq.results as? [VNClassificationObservation] else {
-                return
-            }
-            
-            guard let firstObservation = results.first else {
-                return
+        let accuracy = [CIDetectorAccuracy: CIDetectorAccuracyHigh]
+        let faceDetector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: accuracy)
+        let faces = faceDetector?.features(in: CIImage(cvImageBuffer: pixelBuffer))
+        let imageSize = CVImageBufferGetDisplaySize(pixelBuffer)
+        var actualRect = CGRect()
+        if let faces = faces {
+            for face in faces {
+                actualRect = CGRect(x: face.bounds.origin.x, y: imageSize.height - face.bounds.origin.y - face.bounds.height, width: face.bounds.width, height: face.bounds.height)
+                print(actualRect)
+                
             }
             DispatchQueue.main.async {
-                self.accuracyLabel.text = "\(firstObservation.identifier), \(firstObservation.confidence)"
+                let bound = UIView(frame: actualRect)
+                bound.backgroundColor = .yellow
+                self.view.addSubview(bound)
             }
-            
         }
-        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
+//        guard let model = try? VNCoreMLModel(for: Resnet50().model) else {
+//            return
+//        }
+//        var identifier = VNClassificationObservation()
+//        let request = VNCoreMLRequest(model: model) { (finishedReq, err) in
+//
+//            guard let results = finishedReq.results as? [VNClassificationObservation] else {
+//                return
+//            }
+//
+//            guard let firstObservation = results.first else {
+//                return
+//            }
+//            DispatchQueue.main.async {
+//                self.accuracyLabel.text = "\(firstObservation.identifier), \(firstObservation.confidence)"
+//            }
+//
+//        }
+//        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
     }
 }
