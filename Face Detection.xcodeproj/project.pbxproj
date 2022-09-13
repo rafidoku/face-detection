@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4650F8B428B879F30022645A /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4650F8B328B879F30022645A /* SqueezeNet.mlmodel */; };
-		468340F528BDBAC90076D639 /* Resnet50.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 468340F428BDBAC90076D639 /* Resnet50.mlpackage */; };
+		468DC9D528D02B19002F6444 /* SimulatorDetectedStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 468DC9D428D02B19002F6444 /* SimulatorDetectedStoryboard.storyboard */; };
+		468DC9D728D02B85002F6444 /* SimulatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468DC9D628D02B85002F6444 /* SimulatorViewController.swift */; };
 		5B89171D28B7BA7800ACD733 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89171C28B7BA7800ACD733 /* AppDelegate.swift */; };
 		5B89172128B7BA7800ACD733 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89172028B7BA7800ACD733 /* ViewController.swift */; };
 		5B89172428B7BA7800ACD733 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B89172228B7BA7800ACD733 /* Main.storyboard */; };
@@ -17,8 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4650F8B328B879F30022645A /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
-		468340F428BDBAC90076D639 /* Resnet50.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = Resnet50.mlpackage; sourceTree = "<group>"; };
+		468DC9D428D02B19002F6444 /* SimulatorDetectedStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SimulatorDetectedStoryboard.storyboard; sourceTree = "<group>"; };
+		468DC9D628D02B85002F6444 /* SimulatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorViewController.swift; sourceTree = "<group>"; };
 		5B89171928B7BA7800ACD733 /* Face Detection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Face Detection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B89171C28B7BA7800ACD733 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B89172028B7BA7800ACD733 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,15 +39,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4650F8B228B8793B0022645A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				468340F428BDBAC90076D639 /* Resnet50.mlpackage */,
-				4650F8B328B879F30022645A /* SqueezeNet.mlmodel */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		5B89171028B7BA7800ACD733 = {
 			isa = PBXGroup;
 			children = (
@@ -67,13 +58,14 @@
 		5B89171B28B7BA7800ACD733 /* Face Detection */ = {
 			isa = PBXGroup;
 			children = (
-				4650F8B228B8793B0022645A /* Model */,
 				5B89171C28B7BA7800ACD733 /* AppDelegate.swift */,
 				5B89172028B7BA7800ACD733 /* ViewController.swift */,
 				5B89172228B7BA7800ACD733 /* Main.storyboard */,
 				5B89172528B7BA7A00ACD733 /* Assets.xcassets */,
 				5B89172728B7BA7A00ACD733 /* LaunchScreen.storyboard */,
 				5B89172A28B7BA7A00ACD733 /* Info.plist */,
+				468DC9D428D02B19002F6444 /* SimulatorDetectedStoryboard.storyboard */,
+				468DC9D628D02B85002F6444 /* SimulatorViewController.swift */,
 			);
 			path = "Face Detection";
 			sourceTree = "<group>";
@@ -135,6 +127,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				468DC9D528D02B19002F6444 /* SimulatorDetectedStoryboard.storyboard in Resources */,
 				5B89172928B7BA7A00ACD733 /* LaunchScreen.storyboard in Resources */,
 				5B89172628B7BA7A00ACD733 /* Assets.xcassets in Resources */,
 				5B89172428B7BA7800ACD733 /* Main.storyboard in Resources */,
@@ -149,8 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B89172128B7BA7800ACD733 /* ViewController.swift in Sources */,
-				468340F528BDBAC90076D639 /* Resnet50.mlpackage in Sources */,
-				4650F8B428B879F30022645A /* SqueezeNet.mlmodel in Sources */,
+				468DC9D728D02B85002F6444 /* SimulatorViewController.swift in Sources */,
 				5B89171D28B7BA7800ACD733 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
